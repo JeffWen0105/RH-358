@@ -1,0 +1,1489 @@
+<!doctype html>
+<html>
+   <head>
+      <meta charset="utf-8"/>
+      <meta name="viewport"
+            content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+      <title>RH358: Red Hat Services Management and Automation</title>
+      <link rel="stylesheet" href="css/reveal.css"/>
+      <link rel="stylesheet" href="css/theme/redhat.css" id="theme"/>
+      <!--Theme used for syntax highlighting of code-->
+      <link rel="stylesheet" href="lib/css/zenburn.css"/>
+      <!--Printing and PDF exports-->
+      <script>
+                    var link = document.createElement( 'link' );
+                    link.rel = 'stylesheet';
+                    link.type = 'text/css';
+                    link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+                    document.getElementsByTagName( 'head' )[0].appendChild( link );
+                </script>
+   </head>
+   <body>
+      <div class="reveal">
+         <div class="slides">
+            <section data-state="white"
+                     data-background-image="css/images/RH_Title_Background.png">
+               <img src="css/images/redhat-logo-white.svg" class="title-logo"/>
+               <h2 class="course-title">Red Hat Services Management and Automation</h2>
+               <p class="title-color">RH358</p>
+            </section>
+            <section data-state="black">
+               <h2>Welcome</h2>
+            </section>
+            <section data-state="black">
+               <h2>Course Objectives and Structure</h2>
+            </section>
+            <section data-state="black">
+               <h2>Schedule</h2>
+               <table class="schedule_table">
+                  <tr class="table_header" style="background-color: #D9EBF1;"/>
+                  <tr/>
+                  <tr/>
+                  <tr/>
+                  <tr/>
+                  <tr/>
+               </table>
+            </section>
+            <section data-state="black">
+               <h2>Orientation to the Classroom Lab Environment</h2>
+            </section>
+            <section data-state="black">
+               <h2>Internationalization</h2>
+            </section>
+            <section data-state="white"
+                     data-background-image="css/images/RH_Chapter_Title_Background2.png">
+               <h1 class="course-title">Chapter 1: Managing Network Services</h1>
+               <p class="goal_title">Goal: Discuss and review the key tools and skills needed to manage network services.</p>
+               <br/>
+               <p class="objective_list_title">Objectives:</p>
+               <ul class="objective_list">
+                  <li>
+                     <p>Discuss the goal of this course and review how to manage services.</p>
+                  </li>
+                  <li>
+                     <p>Review how to configure and manage network interfaces with NetworkManager and related tools.</p>
+                  </li>
+                  <li>
+                     <p>Automate configuration of services and network interfaces with Ansible.</p>
+                  </li>
+               </ul>
+            </section>
+            <section data-state="black">
+               <section>
+                  <h2>Controlling Network Services</h2>
+               </section>
+               <section>
+                  <h3>Introduction to Red Hat Services Management and Automation</h3>
+               </section>
+               <section>
+                  <h3>Introduction to Systemd</h3>
+               </section>
+               <section>
+                  <h3>Listing Unit Files with Systemctl</h3>
+               </section>
+               <section>
+                  <h3>Viewing the Status of a Service</h3>
+               </section>
+               <section>
+                  <h3>Unit Dependencies</h3>
+               </section>
+               <section>
+                  <h3>Masking Services</h3>
+               </section>
+               <section>
+                  <h3>Enabling System Daemons to Start or Stop at Boot</h3>
+               </section>
+               <section>
+                  <h3>Summary of Systemctl Commands</h3>
+               </section>
+               <section>
+                  <h3/>
+               </section>
+            </section>
+            <section data-state="black">
+               <h2>
+                  <span class="checklist_title"> Guided Exercise:</span>  Controlling Network Services</h2>
+            </section>
+            <section data-state="black">
+               <section>
+                  <h2>Configuring Network Interfaces</h2>
+               </section>
+               <section>
+                  <h3>NetworkManager Review</h3>
+               </section>
+               <section>
+                  <h3>Viewing Networking Information</h3>
+               </section>
+               <section>
+                  <h3>Adding a Network Connection</h3>
+               </section>
+               <section>
+                  <h3>Controlling Network Connections</h3>
+               </section>
+               <section>
+                  <h3>Modifying Network Connection Settings</h3>
+               </section>
+               <section>
+                  <h3>Deleting a Network Connection</h3>
+               </section>
+               <section>
+                  <h3>Who Can Modify Network Settings?</h3>
+               </section>
+               <section>
+                  <h3>Summary of Commands</h3>
+               </section>
+               <section>
+                  <h3/>
+               </section>
+            </section>
+            <section data-state="black">
+               <h2>
+                  <span class="checklist_title"> Guided Exercise:</span>  Configuring Network Interfaces</h2>
+            </section>
+            <section data-state="black">
+               <section>
+                  <h2>Automating Service and Network Interface Configuration</h2>
+               </section>
+               <section>
+                  <h3>Automation with Red Hat Ansible Automation Platform</h3>
+               </section>
+               <section>
+                  <h3>Automating Service Management</h3>
+               </section>
+               <section>
+                  <h3>Configuring Networking with the Network System Role</h3>
+               </section>
+               <section>
+                  <h3>Ansible Facts for Network Configuration</h3>
+               </section>
+               <section>
+                  <h3/>
+               </section>
+            </section>
+            <section data-state="black">
+               <h2>
+                  <span class="checklist_title"> Guided Exercise:</span>  Automating Service and Network Interface Configuration</h2>
+            </section>
+            <section data-state="black">
+               <h2>
+                  <span class="lab_title"> Lab:</span>  Managing Network Services</h2>
+            </section>
+            <section data-state="black">
+               <h2 class="summary-title">Summary</h2>
+               <ul class="summary_list">
+                  <li>Determine the status of system daemons and network services started by <code>systemd</code>.</li>
+                  <li>Start, stop, and enable services using <code>systemctl</code>.</li>
+                  <li>Configure IPv4 and IPv6 networking using <code>nmcli</code>.</li>
+                  <li>Use Ansible to configure network settings using the <code>rhel-system-roles.network</code> role.</li>
+               </ul>
+            </section>
+            <section data-state="white"
+                     data-background-image="css/images/RH_Chapter_Title_Background2.png">
+               <h1 class="course-title">Chapter 2: Configuring Link Aggregation</h1>
+               <p class="goal_title">Goal: To configure and troubleshoot advanced network interface functionality, including teaming.</p>
+               <br/>
+               <p class="objective_list_title">Objectives:</p>
+               <ul class="objective_list">
+                  <li>
+                     <p>Use network teaming to provide link redundancy or higher throughput.</p>
+                  </li>
+                  <li>
+                     <p>Manage a network team interface.</p>
+                  </li>
+                  <li>
+                     <p>Automate the creation and configuration of a network team with Ansible.</p>
+                  </li>
+               </ul>
+            </section>
+            <section data-state="black">
+               <section>
+                  <h2>Configuring Network Teaming</h2>
+               </section>
+               <section>
+                  <h3>Introducing Network Teaming Concepts</h3>
+               </section>
+               <section>
+                  <h3>Configuring Network Teams</h3>
+               </section>
+               <section>
+                  <h3/>
+               </section>
+            </section>
+            <section data-state="black">
+               <h2>
+                  <span class="checklist_title"> Guided Exercise:</span>  Configuring Network Teaming</h2>
+            </section>
+            <section data-state="black">
+               <section>
+                  <h2>Managing Network Teaming</h2>
+               </section>
+               <section>
+                  <h3>Network Teaming Configuration Files</h3>
+               </section>
+               <section>
+                  <h3>Setting and Adjusting Team Configuration</h3>
+               </section>
+               <section>
+                  <h3>Troubleshooting Network Teams</h3>
+               </section>
+               <section>
+                  <h3/>
+               </section>
+            </section>
+            <section data-state="black">
+               <h2>
+                  <span class="checklist_title"> Guided Exercise:</span>  Managing Network Teaming</h2>
+            </section>
+            <section data-state="black">
+               <section>
+                  <h2>Automating Network Teaming</h2>
+               </section>
+               <section>
+                  <h3>Configuring Network Teaming with Ansible</h3>
+               </section>
+               <section>
+                  <h3/>
+               </section>
+            </section>
+            <section data-state="black">
+               <h2>
+                  <span class="checklist_title"> Guided Exercise:</span>  Automating Network Teaming</h2>
+            </section>
+            <section data-state="black">
+               <h2>
+                  <span class="lab_title"> Lab:</span>  Configuring Link Aggregation</h2>
+            </section>
+            <section data-state="black">
+               <h2 class="summary-title">Summary</h2>
+               <ul class="summary_list">
+                  <li>Define and activate network teams.</li>
+                  <li>Change the configuration of a network team.</li>
+                  <li>Change the runner used by a team interface.</li>
+                  <li>Troubleshoot a network team with <code>teamnl</code> and <code>teamdctl</code>.</li>
+                  <li>Automate the creation and configuration of network teams by using the <code>rhel-system-roles.network</code> Ansible Role and Ansible modules.</li>
+               </ul>
+            </section>
+            <section data-state="white"
+                     data-background-image="css/images/RH_Chapter_Title_Background2.png">
+               <h1 class="course-title">Chapter 3: Managing DNS and DNS Servers</h1>
+               <p class="goal_title">Goal: Explain the operation of DNS service, troubleshoot DNS issues, and configure servers to act as a DNS caching name server or as an authoritative name server.</p>
+               <br/>
+               <p class="objective_list_title">Objectives:</p>
+               <ul class="objective_list">
+                  <li>
+                     <p>Describe the basic operation of the DNS protocol, what domains and zones are, and some key DNS resource records.</p>
+                  </li>
+                  <li>
+                     <p>Configure a more secure caching name server using Unbound.</p>
+                  </li>
+                  <li>
+                     <p>Troubleshoot problems with DNS name resolution using standard command-line utilities.</p>
+                  </li>
+                  <li>
+                     <p>Configure authoritative DNS name servers using BIND 9.</p>
+                  </li>
+                  <li>
+                     <p>Automate the creation and configuration of a caching name server with Unbound and an authoritative name server with BIND 9.</p>
+                  </li>
+               </ul>
+            </section>
+            <section data-state="black">
+               <section>
+                  <h2>Describing the DNS Service</h2>
+               </section>
+               <section>
+                  <h3>The Domain Name System</h3>
+               </section>
+               <section>
+                  <h3>Anatomy of DNS Lookups</h3>
+               </section>
+               <section>
+                  <img src="images/dns/dns-lookups.svg"/>
+                  <p>DNS lookup process</p>
+               </section>
+               <section>
+                  <h3>DNS Resource Records</h3>
+               </section>
+               <section>
+                  <h3>Hosts and Resource Records</h3>
+               </section>
+               <section>
+                  <h3>Strengthening DNS Security</h3>
+               </section>
+               <section>
+                  <h3/>
+               </section>
+            </section>
+            <section data-state="black">
+               <h2>
+                  <span class="multchoice_title"> Quiz:</span>  Describing the DNS Service</h2>
+            </section>
+            <section data-state="black">
+               <section>
+                  <h2>Configuring a Caching Name Server with Unbound</h2>
+               </section>
+               <section>
+                  <h3>Installing and Configuring Unbound</h3>
+               </section>
+               <section>
+                  <h3>Managing Unbound</h3>
+               </section>
+               <section>
+                  <h3/>
+               </section>
+            </section>
+            <section data-state="black">
+               <h2>
+                  <span class="checklist_title"> Guided Exercise:</span>  Configuring a Caching Name Server with Unbound</h2>
+            </section>
+            <section data-state="black">
+               <section>
+                  <h2>Troubleshooting DNS Issues</h2>
+               </section>
+               <section>
+                  <h3>Troubleshooting DNS</h3>
+               </section>
+               <section>
+                  <h3>Confirming the Source of Name Resolution Issues</h3>
+               </section>
+               <section>
+                  <h3>Investigating DNS Issues</h3>
+               </section>
+               <section>
+                  <h3>Handling Old Data on Caching Name Servers</h3>
+               </section>
+               <section>
+                  <h3>Identifying Issues with Zone Data</h3>
+               </section>
+               <section>
+                  <h3/>
+               </section>
+            </section>
+            <section data-state="black">
+               <h2>
+                  <span class="checklist_title"> Guided Exercise:</span>  Troubleshooting DNS Issues</h2>
+            </section>
+            <section data-state="black">
+               <section>
+                  <h2>Configuring Authoritative Name Servers with BIND 9</h2>
+               </section>
+               <section>
+                  <h3>Designing an Architecture for Authoritative Name Servers</h3>
+               </section>
+               <section>
+                  <img src="images/dns/bind-external-client.svg"/>
+                  <p>DNS lookup by external customer</p>
+               </section>
+               <section>
+                  <img src="images/dns/bind-internal-client.svg"/>
+                  <p>DNS lookup by internal client</p>
+               </section>
+               <section>
+                  <img src="images/dns/bind-internal-slave.svg"/>
+                  <p>DNS lookup with internal secondary server</p>
+               </section>
+               <section>
+                  <h3>Installing BIND</h3>
+               </section>
+               <section>
+                  <h3>Configuring BIND</h3>
+               </section>
+               <section>
+                  <h3>Editing Zone Files</h3>
+               </section>
+               <section>
+                  <h3>Verifying Your Configuration</h3>
+               </section>
+               <section>
+                  <h3>Running BIND</h3>
+               </section>
+               <section>
+                  <h3/>
+               </section>
+            </section>
+            <section data-state="black">
+               <h2>
+                  <span class="checklist_title"> Guided Exercise:</span>  Configuring Authoritative Name Servers with BIND 9</h2>
+            </section>
+            <section data-state="black">
+               <section>
+                  <h2>Automating Name Server Configuration</h2>
+               </section>
+               <section>
+                  <h3>Automating DNS Name Server Deployment</h3>
+               </section>
+               <section>
+                  <h3>Deploying Unbound with Ansible</h3>
+               </section>
+               <section>
+                  <h3>Deploying Authoritative BIND Servers with Ansible</h3>
+               </section>
+               <section>
+                  <h3/>
+               </section>
+            </section>
+            <section data-state="black">
+               <h2>
+                  <span class="checklist_title"> Guided Exercise:</span>  Automating Name Server Configuration</h2>
+            </section>
+            <section data-state="black">
+               <h2>
+                  <span class="lab_title"> Lab:</span>  Managing DNS for Servers</h2>
+            </section>
+            <section data-state="black">
+               <h2 class="summary-title">Summary</h2>
+               <ul class="summary_list">
+                  <li>Describe the operation of the Domain Name System (DNS) and its components.</li>
+                  <li>Define the resource records used to store data in DNS.</li>
+                  <li>Install an Unbound caching name server, usable by other clients in the organization.</li>
+                  <li>Install primary and secondary BIND authoritative name servers to provide information about your domains to external sources.</li>
+                  <li>Perform basic troubleshooting and maintenance of client name resolution, DNS servers, their zone data, and their caches.</li>
+                  <li>Automate deployment of name servers using Ansible Playbooks.</li>
+               </ul>
+            </section>
+            <section data-state="white"
+                     data-background-image="css/images/RH_Chapter_Title_Background2.png">
+               <h1 class="course-title">Chapter 4: Managing DHCP and IP Address Assignment</h1>
+               <p class="goal_title">Goal: Explain and configure services used for IPv4 and IPv6 address assignment, including DHCP, DHCPv6, and SLAAC.</p>
+               <br/>
+               <p class="objective_list_title">Objectives:</p>
+               <ul class="objective_list">
+                  <li>
+                     <p>Describe the operation of the DHCP protocol for IPv4, and configure a DHCP server to provide a pool of IPv4 addresses for DHCP clients, while providing reserved addresses to specific clients.</p>
+                  </li>
+                  <li>
+                     <p>Discuss the role of DHCPv6 in IPv6, compare it to other IPv6 network autoconfiguration techniques, and configure a DHCPv6 server.</p>
+                  </li>
+                  <li>
+                     <p>Automate the configuration of a DHCP server providing support for IPv4 and IPv6 addresses.</p>
+                  </li>
+               </ul>
+            </section>
+            <section data-state="black">
+               <section>
+                  <h2>Configuring IPv4 Address Assignment with DHCP</h2>
+               </section>
+               <section>
+                  <h3>Describing DHCP</h3>
+               </section>
+               <section>
+                  <h3>Deploying a DHCP Server</h3>
+               </section>
+               <section>
+                  <h3>Configuring a DHCP Client</h3>
+               </section>
+               <section>
+                  <h3/>
+               </section>
+            </section>
+            <section data-state="black">
+               <h2>
+                  <span class="checklist_title"> Guided Exercise:</span>  Configuring IPv4 Address Assignment with DHCP</h2>
+            </section>
+            <section data-state="black">
+               <section>
+                  <h2>Configuring IPv6 Address Assignment</h2>
+               </section>
+               <section>
+                  <h3>Overview of IPv6 Address Autoconfiguration</h3>
+               </section>
+               <section>
+                  <h3>Reviewing IPv6 Link-local Address Assignment</h3>
+               </section>
+               <section>
+                  <h3>Describing IPv6 Stateless Address Autoconfiguration</h3>
+               </section>
+               <section>
+                  <h3>Implementing DHCPv6</h3>
+               </section>
+               <section>
+                  <h3>Configuring the Automatic Address Assignment Method</h3>
+               </section>
+            </section>
+            <section data-state="black">
+               <h2>
+                  <span class="checklist_title"> Guided Exercise:</span>  Configuring IPv6 Address Assignment</h2>
+            </section>
+            <section data-state="black">
+               <section>
+                  <h2>Automating DHCP Configuration</h2>
+               </section>
+               <section>
+                  <h3>Deploying a DHCP Server with Ansible</h3>
+               </section>
+               <section>
+                  <h3>Configuring a DHCP Client with Ansible</h3>
+               </section>
+               <section>
+                  <h3/>
+               </section>
+            </section>
+            <section data-state="black">
+               <h2>
+                  <span class="checklist_title"> Guided Exercise:</span>  Automating DHCP Configuration</h2>
+            </section>
+            <section data-state="black">
+               <h2>
+                  <span class="lab_title"> Lab:</span>  Managing DHCP and IP Address Assignment</h2>
+            </section>
+            <section data-state="black">
+               <h2 class="summary-title">Summary</h2>
+               <ul class="summary_list">
+                  <li>The DHCP server must have an IP address in the subnet or prefix that it manages.</li>
+                  <li>The dhcp-server package provides both the DHCPv4 and DHCPv6 services.</li>
+                  <li>DHCPv4 uses the MAC address of the clients to assign fixed IPv4 addresses.</li>
+                  <li>DHCPv6 uses the DUID of the clients to assign fixed IPv6 addresses.</li>
+                  <li>On clients, set the <code>ipv4.method</code> or <code>ipv6.method</code> to <code>auto</code> for IPv4 or IPv6 autoconfiguration.</li>
+               </ul>
+            </section>
+            <section data-state="white"
+                     data-background-image="css/images/RH_Chapter_Title_Background2.png">
+               <h1 class="course-title">Chapter 5: Managing Printers and Printing Files</h1>
+               <p class="goal_title">Goal: Configure systems to print to a network printer that supports IPP Everywhere, and manage existing printer queues.</p>
+               <br/>
+               <p class="objective_list_title">Objectives:</p>
+               <ul class="objective_list">
+                  <li>
+                     <p>Create and manage a printer queue for a network printer, and use command-line tools to print files and manage printer queues.</p>
+                  </li>
+                  <li>
+                     <p>Automate network printer configuration using Ansible.</p>
+                  </li>
+               </ul>
+            </section>
+            <section data-state="black">
+               <section>
+                  <h2>Configuring and Managing Printers</h2>
+               </section>
+               <section>
+                  <h3>Describing the CUPS Printing Architecture</h3>
+               </section>
+               <section>
+                  <h3>Discovering Network Printers with IPP Everywhere</h3>
+               </section>
+               <section>
+                  <h3>Creating a Print Queue</h3>
+               </section>
+               <section>
+                  <h3>Printing Files and Managing Print Jobs</h3>
+               </section>
+               <section>
+                  <h3>Managing Printer Queues</h3>
+               </section>
+               <section>
+                  <h3/>
+               </section>
+            </section>
+            <section data-state="black">
+               <h2>
+                  <span class="checklist_title"> Guided Exercise:</span>  Configuring and Managing Printers</h2>
+            </section>
+            <section data-state="black">
+               <section>
+                  <h2>Automating Printer Configuration</h2>
+               </section>
+               <section>
+                  <h3>Deploying CUPS with Ansible</h3>
+               </section>
+               <section>
+                  <h3>Adding and Removing Printers</h3>
+               </section>
+               <section>
+                  <h3>Managing Print Queues with Ansible</h3>
+               </section>
+               <section>
+                  <h3/>
+               </section>
+            </section>
+            <section data-state="black">
+               <h2>
+                  <span class="checklist_title"> Guided Exercise:</span>  Automating Printer Configuration</h2>
+            </section>
+            <section data-state="black">
+               <h2>
+                  <span class="lab_title"> Lab:</span>  Managing Printers and Printing Files</h2>
+            </section>
+            <section data-state="black">
+               <h2 class="summary-title">Summary</h2>
+               <ul class="summary_list">
+                  <li>Install and use the tools needed to discover IPP Everywhere networked printers.</li>
+                  <li>Install CUPS and use the <code>lpadmin</code> command to create and manage a print queue.</li>
+                  <li>Manage print jobs with the <code>lp</code>, <code>lpstat</code>, and <code>cancel</code> commands.</li>
+                  <li>Adjust print queue print job handling with the <code>cupsenable</code>, <code>cupsdisable</code>, <code>cupsaccept</code>, and <code>cupsreject</code> commands.</li>
+                  <li>Automate printer installation and administration with Ansible.</li>
+               </ul>
+            </section>
+            <section data-state="white"
+                     data-background-image="css/images/RH_Chapter_Title_Background2.png">
+               <h1 class="course-title">Chapter 6: Configuring Email Transmission</h1>
+               <p class="goal_title">Goal: Discuss how mail servers operate, and configure a server to use system tools and Postfix to send email messages through an outbound mail relay.</p>
+               <br/>
+               <p class="objective_list_title">Objectives:</p>
+               <ul class="objective_list">
+                  <li>
+                     <p>Configure a server to send all email through an outbound SMTP gateway.</p>
+                  </li>
+                  <li>
+                     <p>Automate the configuration of Postfix to send all outbound email through an SMTP gateway.</p>
+                  </li>
+               </ul>
+            </section>
+            <section data-state="black">
+               <section>
+                  <h2>Configuring a Send-only Email Service</h2>
+               </section>
+               <section>
+                  <h3>Describing Email Architecture and Null Clients</h3>
+               </section>
+               <section>
+                  <h3>Sending Email with Postfix</h3>
+               </section>
+               <section>
+                  <h3>Troubleshooting Email Transmission</h3>
+               </section>
+               <section>
+                  <h3/>
+               </section>
+            </section>
+            <section data-state="black">
+               <h2>
+                  <span class="checklist_title"> Guided Exercise:</span>  Configuring Send-only Email Service</h2>
+            </section>
+            <section data-state="black">
+               <section>
+                  <h2>Automating Postfix Configuration</h2>
+               </section>
+               <section>
+                  <h3>Configuring SMTP with the Postfix System Role</h3>
+               </section>
+               <section>
+                  <h3/>
+               </section>
+            </section>
+            <section data-state="black">
+               <h2>
+                  <span class="checklist_title"> Guided Exercise:</span>  Automating Postfix Configuration</h2>
+            </section>
+            <section data-state="black">
+               <h2>
+                  <span class="lab_title"> Lab:</span>  Configuring Email Transmission</h2>
+            </section>
+            <section data-state="black">
+               <h2 class="summary-title">Summary</h2>
+               <ul class="summary_list">
+                  <li>Many system applications can send email by using the helper application <code>/usr/sbin/sendmail</code> or by connecting to a local mail server on <code>localhost</code> port 25/TCP.</li>
+                  <li>Postfix provides <code>/usr/sbin/sendmail</code> and the local mail server by default on Red Hat Enterprise Linux 8.</li>
+                  <li>A null client is a local mail server that does not accept email for local delivery and submits all outbound email to a mail relay for delivery to other servers.</li>
+               </ul>
+            </section>
+            <section data-state="black">
+               <h2 class="summary-title">Summary (continued)</h2>
+               <ul class="summary_list">
+                  <li>The main Postfix configuration file, <code>/etc/postfix/main.cf</code>, can be edited by hand or by using the <code>postconf</code> command.</li>
+                  <li>The Ansible Role <code>rhel-system-roles.postfix</code>, also called <code>linux-system-roles.postfix</code>, provides an easy way to automate Postfix configuration.</li>
+               </ul>
+            </section>
+            <section data-state="white"
+                     data-background-image="css/images/RH_Chapter_Title_Background2.png">
+               <h1 class="course-title">Chapter 7: Configuring MariaDB SQL Databases</h1>
+               <p class="goal_title">Goal: Discuss the basic operation of SQL-based relational databases, perform basic SQL queries for troubleshooting, and be able to set up a simple MariaDB database service.</p>
+               <br/>
+               <p class="objective_list_title">Objectives:</p>
+               <ul class="objective_list">
+                  <li>
+                     <p>Install and perform basic configuration of a MariaDB relational database server.</p>
+                  </li>
+                  <li>
+                     <p>Examine, search, create, and change database information using Structured Query Language (SQL) and MariaDB statements.</p>
+                  </li>
+                  <li>
+                     <p>Configure database users and assign them access rights in MariaDB.</p>
+                  </li>
+                  <li>
+                     <p>Back up a MariaDB database safely and restore that backup.</p>
+                  </li>
+                  <li>
+                     <p>Automate the installation and configuration of a MariaDB database server.</p>
+                  </li>
+               </ul>
+            </section>
+            <section data-state="black">
+               <section>
+                  <h2>Installing a MariaDB Database</h2>
+               </section>
+               <section>
+                  <h3>Describing the Importance of Relational Databases</h3>
+               </section>
+               <section>
+                  <h3>Installing MariaDB</h3>
+               </section>
+               <section>
+                  <h3>Securing the MariaDB Installation</h3>
+               </section>
+               <section>
+                  <h3>Managing Connections to MariaDB</h3>
+               </section>
+               <section>
+                  <img src="images/database/database-same-server.png"/>
+                  <p>Local access to MariaDB</p>
+               </section>
+               <section>
+                  <img src="images/database/database-different-server.png"/>
+                  <p>Remote access to MariaDB</p>
+               </section>
+               <section>
+                  <h3/>
+               </section>
+            </section>
+            <section data-state="black">
+               <h2>
+                  <span class="checklist_title"> Guided Exercise:</span>  Installing a MariaDB Database</h2>
+            </section>
+            <section data-state="black">
+               <section>
+                  <h2>Working with SQL in MariaDB</h2>
+               </section>
+               <section>
+                  <h3>Accessing MariaDB Databases</h3>
+               </section>
+               <section>
+                  <h3>Creating a New Database</h3>
+               </section>
+               <section>
+                  <h3>Investigating a Database's Structure with SQL</h3>
+               </section>
+               <section>
+                  <h3>Modifying Data in a Database</h3>
+               </section>
+               <section>
+                  <h3/>
+               </section>
+            </section>
+            <section data-state="black">
+               <h2>
+                  <span class="checklist_title"> Guided Exercise:</span>  Working with SQL in MariaDB</h2>
+            </section>
+            <section data-state="black">
+               <section>
+                  <h2>Managing MariaDB Users and Access Rights</h2>
+               </section>
+               <section>
+                  <h3>Creating User Accounts in MariaDB</h3>
+               </section>
+               <section>
+                  <h3>Controlling User Privileges</h3>
+               </section>
+               <section>
+                  <h3>Dropping User Accounts</h3>
+               </section>
+               <section>
+                  <h3>Troubleshooting Database Access</h3>
+               </section>
+            </section>
+            <section data-state="black">
+               <h2>
+                  <span class="checklist_title"> Guided Exercise:</span>  Managing MariaDB Users and Access Rights</h2>
+            </section>
+            <section data-state="black">
+               <section>
+                  <h2>Creating and Restoring MariaDB Backups</h2>
+               </section>
+               <section>
+                  <h3>Creating a Backup of MariaDB Databases</h3>
+               </section>
+               <section>
+                  <h3>Performing a Logical Backup</h3>
+               </section>
+               <section>
+                  <h3>Performing a Physical Backup</h3>
+               </section>
+               <section>
+                  <h3>Restoring a Backup</h3>
+               </section>
+               <section>
+                  <h3/>
+               </section>
+            </section>
+            <section data-state="black">
+               <h2>
+                  <span class="checklist_title"> Guided Exercise:</span>  Creating and Restoring MariaDB Backups</h2>
+            </section>
+            <section data-state="black">
+               <section>
+                  <h2>Automating MariaDB Deployment</h2>
+               </section>
+               <section>
+                  <h3>Deploying MariaDB with Ansible</h3>
+               </section>
+               <section>
+                  <h3>Configuring MariaDB Security with Ansible</h3>
+               </section>
+               <section>
+                  <h3>Managing MariaDB Users with Ansible</h3>
+               </section>
+               <section>
+                  <h3>Creating and Restoring from Backup Files with Ansible</h3>
+               </section>
+               <section>
+                  <h3/>
+               </section>
+            </section>
+            <section data-state="black">
+               <h2>
+                  <span class="checklist_title"> Guided Exercise:</span>  Automating MariaDB Deployment</h2>
+            </section>
+            <section data-state="black">
+               <h2>
+                  <span class="lab_title"> Lab:</span>  Configuring MariaDB SQL Databases</h2>
+            </section>
+            <section data-state="black">
+               <h2 class="summary-title">Summary</h2>
+               <ul class="summary_list">
+                  <li>Describe basic relational database concepts.</li>
+                  <li>Perform a MariaDB installation.</li>
+                  <li>Use SQL to create, examine, and search databases.</li>
+                  <li>Create users, and grant, revoke, and flush privileges.</li>
+                  <li>Back up and restore a MariaDB database.</li>
+                  <li>Automate the installation and configuration of MariaDB servers and clients.</li>
+               </ul>
+            </section>
+            <section data-state="white"
+                     data-background-image="css/images/RH_Chapter_Title_Background2.png">
+               <h1 class="course-title">Chapter 8: Configuring Web Servers</h1>
+               <p class="goal_title">Goal: Provide web content from Apache HTTPD or Nginx web servers, and configure them with virtual hosts and TLS-based encryption.</p>
+               <br/>
+               <p class="objective_list_title">Objectives:</p>
+               <ul class="objective_list">
+                  <li>
+                     <p>Configure a basic web server using Apache HTTPD.</p>
+                  </li>
+                  <li>
+                     <p>Configure Apache HTTPD to provide IP-based and name-based virtual hosts.</p>
+                  </li>
+                  <li>
+                     <p>Configure Apache HTTPD to provide virtual hosts that use TLS to support the HTTPS protocol.</p>
+                  </li>
+                  <li>
+                     <p>Configure a web server that provides HTTPS access to multiple virtual hosts using Nginx.</p>
+                  </li>
+                  <li>
+                     <p>Automate configuration of Apache HTTPD and Nginx web servers using Ansible.</p>
+                  </li>
+               </ul>
+            </section>
+            <section data-state="black">
+               <section>
+                  <h2>Configuring a Basic Web Server with Apache HTTPD</h2>
+               </section>
+               <section>
+                  <h3>Installing Apache HTTP Server</h3>
+               </section>
+               <section>
+                  <h3>Configuring Apache HTTP Server</h3>
+               </section>
+               <section>
+                  <h3>Starting Apache HTTP Server</h3>
+               </section>
+               <section>
+                  <h3/>
+               </section>
+            </section>
+            <section data-state="black">
+               <h2>
+                  <span class="checklist_title"> Guided Exercise:</span>  Configuring a Basic Web Server with Apache HTTPD</h2>
+            </section>
+            <section data-state="black">
+               <section>
+                  <h2>Configuring and Troubleshooting Virtual Hosts with Apache HTTPD</h2>
+               </section>
+               <section>
+                  <h3>Providing Multiple Web Sites with Virtual Hosts</h3>
+               </section>
+               <section>
+                  <h3>Configuring Apache HTTPD Virtual Hosts</h3>
+               </section>
+               <section>
+                  <h3>Troubleshooting Virtual Hosts</h3>
+               </section>
+               <section>
+                  <h3/>
+               </section>
+            </section>
+            <section data-state="black">
+               <h2>
+                  <span class="checklist_title"> Guided Exercise:</span>  Configuring and Troubleshooting Virtual Hosts with Apache HTTPD</h2>
+            </section>
+            <section data-state="black">
+               <section>
+                  <h2>Configuring HTTPS with Apache HTTPD</h2>
+               </section>
+               <section>
+                  <h3>Describing the TLS Protocol</h3>
+               </section>
+               <section>
+                  <h3>Obtaining a Server Certificate</h3>
+               </section>
+               <section>
+                  <h3>Configuring a TLS-based Virtual Host</h3>
+               </section>
+               <section>
+                  <h3>Redirecting HTTP Clients to the HTTPS Site</h3>
+               </section>
+               <section>
+                  <h3/>
+               </section>
+            </section>
+            <section data-state="black">
+               <h2>
+                  <span class="checklist_title"> Guided Exercise:</span>  Configuring HTTPS with Apache HTTPD</h2>
+            </section>
+            <section data-state="black">
+               <section>
+                  <h2>Configuring a Web Server with Nginx</h2>
+               </section>
+               <section>
+                  <h3>Installing Nginx</h3>
+               </section>
+               <section>
+                  <h3>Configuring Nginx</h3>
+               </section>
+               <section>
+                  <h3>Running Nginx</h3>
+               </section>
+               <section>
+                  <h3/>
+               </section>
+            </section>
+            <section data-state="black">
+               <h2>
+                  <span class="checklist_title"> Guided Exercise:</span>  Configuring a Web Server with Nginx</h2>
+            </section>
+            <section data-state="black">
+               <section>
+                  <h2>Automating Web Server Configuration</h2>
+               </section>
+               <section>
+                  <h3>Automating Web Server Configuration</h3>
+               </section>
+               <section>
+                  <h3>Installing the Web Service Package</h3>
+               </section>
+               <section>
+                  <h3>Deploying the Web Content</h3>
+               </section>
+               <section>
+                  <h3>Deploying Server Certificates and Keys</h3>
+               </section>
+               <section>
+                  <h3>Deploying Configuration Files</h3>
+               </section>
+               <section>
+                  <h3>Configuring Firewall Rules</h3>
+               </section>
+               <section>
+                  <h3>Ensuring the Web Server is Running</h3>
+               </section>
+               <section>
+                  <h3>Preparing Handlers</h3>
+               </section>
+               <section>
+                  <h3/>
+               </section>
+            </section>
+            <section data-state="black">
+               <h2>
+                  <span class="checklist_title"> Guided Exercise:</span>  Automating Web Server Configuration</h2>
+            </section>
+            <section data-state="black">
+               <h2>
+                  <span class="lab_title"> Lab:</span>  Configuring Web Servers</h2>
+            </section>
+            <section data-state="black">
+               <h2 class="summary-title">Summary</h2>
+               <ul class="summary_list">
+                  <li>Apache HTTP Server and Nginx both provide support for running a web server on Red Hat Enterprise Linux.</li>
+                  <li>Both web servers allow you to support multiple web sites on the same server.</li>
+                  <li>The HTTPS protocol uses TLS private keys and server certificates to protect communication between web browsers and web servers.</li>
+               </ul>
+            </section>
+            <section data-state="black">
+               <h2 class="summary-title">Summary (continued)</h2>
+               <ul class="summary_list">
+                  <li>Each virtual host provided by the web server can have its own TLS certificate and private key, and the TLS certificate can support multiple names for the same site.</li>
+                  <li>Ansible provides tools that you can use to manage TLS private keys, certificate signing requests, and certificates, as well as automating your web server deployment and configuration.</li>
+               </ul>
+            </section>
+            <section data-state="white"
+                     data-background-image="css/images/RH_Chapter_Title_Background2.png">
+               <h1 class="course-title">Chapter 9: Optimizing Web Server Traffic</h1>
+               <p class="goal_title">Goal: Improve performance of your web servers by using Varnish to cache static content being served and HAProxy to terminate TLS connections and balance load between servers.</p>
+               <br/>
+               <p class="objective_list_title">Objectives:</p>
+               <ul class="objective_list">
+                  <li>
+                     <p>Improve web site performance by caching static web content with Varnish.</p>
+                  </li>
+                  <li>
+                     <p>Improve web site performance by using HAProxy as a load balancer and an HTTPS terminator in front of your Varnish Cache.</p>
+                  </li>
+                  <li>
+                     <p>Automate the configuration of HAProxy and Varnish using Ansible.</p>
+                  </li>
+               </ul>
+            </section>
+            <section data-state="black">
+               <section>
+                  <h2>Caching Static Content with Varnish</h2>
+               </section>
+               <section>
+                  <h3>Describing Varnish</h3>
+               </section>
+               <section>
+                  <img src="images/optimizeweb/optimizeweb-varnish-miss-01.svg"/>
+                  <p>Retrieving an object from the back-end web server</p>
+               </section>
+               <section>
+                  <img src="images/optimizeweb/optimizeweb-varnish-hit-01.svg"/>
+                  <p>Retrieving an object from the cache</p>
+               </section>
+               <section>
+                  <h3>Deploying Varnish</h3>
+               </section>
+               <section>
+                  <h3>Configuring Varnish</h3>
+               </section>
+               <section>
+                  <h3>Troubleshooting and Managing Varnish</h3>
+               </section>
+            </section>
+            <section data-state="black">
+               <h2>
+                  <span class="checklist_title"> Guided Exercise:</span>  Caching Static Content with Varnish</h2>
+            </section>
+            <section data-state="black">
+               <section>
+                  <h2>Terminating HTTPS Traffic and Load Balancing with HAProxy</h2>
+               </section>
+               <section>
+                  <h3>Describing HAProxy</h3>
+               </section>
+               <section>
+                  <img src="images/optimizeweb/optimizeweb-haproxy-lecture-ssl.svg"/>
+                  <p>Terminating HTTPS connections with HAProxy</p>
+               </section>
+               <section>
+                  <img src="images/optimizeweb/optimizeweb-haproxy-lecture-load.svg"/>
+                  <p>Load balancing requests with HAProxy</p>
+               </section>
+               <section>
+                  <h3>Deploying and Configuring HAProxy</h3>
+               </section>
+               <section>
+                  <h3>Configuring HAProxy in Front of Varnish</h3>
+               </section>
+               <section>
+                  <img src="images/optimizeweb/optimizeweb-haproxy-lecture-varnish.svg"/>
+                  <p>Load balancing requests to Varnish</p>
+               </section>
+               <section>
+                  <h3>Monitoring and Managing HAProxy</h3>
+               </section>
+               <section>
+                  <h3/>
+               </section>
+            </section>
+            <section data-state="black">
+               <h2>
+                  <span class="checklist_title"> Guided Exercise:</span>  Terminating HTTPS Traffic and Load Balancing with HAProxy</h2>
+            </section>
+            <section data-state="black">
+               <section>
+                  <h2>Automating Web Service Optimization</h2>
+               </section>
+               <section>
+                  <h3>Deploying HAProxy and Varnish with Ansible</h3>
+               </section>
+               <section>
+                  <h3>Using the HAProxy Module for Rolling Updates</h3>
+               </section>
+               <section>
+                  <h3/>
+               </section>
+            </section>
+            <section data-state="black">
+               <h2>
+                  <span class="checklist_title"> Guided Exercise:</span>  Automating Web Service Optimization</h2>
+            </section>
+            <section data-state="black">
+               <h2>
+                  <span class="lab_title"> Lab:</span>  Optimizing Web Server Traffic</h2>
+            </section>
+            <section data-state="black">
+               <h2 class="summary-title">Summary</h2>
+               <ul class="summary_list">
+                  <li>Varnish Cache speeds up web server response by caching commonly accessed objects in memory.</li>
+                  <li>The cache configuration and access control list for Varnish is specified by writing statements in <code>/etc/varnish/default.vcl</code> using the Varnish Control Language (VCL).</li>
+                  <li>To change the network port used by Varnish, you override the <code>systemd</code> service file's <code>ExecStart</code> parameter.</li>
+                  <li>You can use HAProxy to balance load between multiple web servers.</li>
+               </ul>
+            </section>
+            <section data-state="black">
+               <h2 class="summary-title">Summary (continued)</h2>
+               <ul class="summary_list">
+                  <li>HAProxy can also terminate HTTPS connections and forward them through a Varnish Cache for a web server.</li>
+                  <li>You can use Ansible and its <code>haproxy</code> module to perform rolling upgrades of web content and software for an HAProxy-based load balanced web farm.</li>
+               </ul>
+            </section>
+            <section data-state="white"
+                     data-background-image="css/images/RH_Chapter_Title_Background2.png">
+               <h1 class="course-title">Chapter 10: Providing File-based Network Storage</h1>
+               <p class="goal_title">Goal: Provide simple file-based network shares to clients using the NFS and SMB protocols.</p>
+               <br/>
+               <p class="objective_list_title">Objectives:</p>
+               <ul class="objective_list">
+                  <li>
+                     <p>Export file systems for network clients using the NFS protocol, restricting access based on source IP addresses.</p>
+                  </li>
+                  <li>
+                     <p>Share file systems to network clients using the SMB protocol.</p>
+                  </li>
+                  <li>
+                     <p>Automate configuration of network file systems using NFS and SMB.</p>
+                  </li>
+               </ul>
+            </section>
+            <section data-state="black">
+               <section>
+                  <h2>Exporting NFS File Systems</h2>
+               </section>
+               <section>
+                  <h3>Describing NFS</h3>
+               </section>
+               <section>
+                  <h3>Enabling the NFS Server</h3>
+               </section>
+               <section>
+                  <h3>Configuring NFS Exports</h3>
+               </section>
+               <section>
+                  <h3>Inspecting NFS Exports</h3>
+               </section>
+            </section>
+            <section data-state="black">
+               <h2>
+                  <span class="checklist_title"> Guided Exercise:</span>  Exporting NFS File Systems</h2>
+            </section>
+            <section data-state="black">
+               <section>
+                  <h2>Providing SMB File Shares</h2>
+               </section>
+               <section>
+                  <h3>Describing SMB</h3>
+               </section>
+               <section>
+                  <h3>Sharing Directories with SMB</h3>
+               </section>
+               <section>
+                  <h3>Installing Samba and Preparing Directories for Sharing</h3>
+               </section>
+               <section>
+                  <h3>Configuring Samba</h3>
+               </section>
+               <section>
+                  <h3>Preparing Samba Users</h3>
+               </section>
+               <section>
+                  <h3>Starting Samba</h3>
+               </section>
+               <section>
+                  <h3>Mounting SMB File Systems</h3>
+               </section>
+            </section>
+            <section data-state="black">
+               <h2>
+                  <span class="checklist_title"> Guided Exercise:</span>  Providing SMB File Shares</h2>
+            </section>
+            <section data-state="black">
+               <section>
+                  <h2>Automating File-based Storage Provisioning</h2>
+               </section>
+               <section>
+                  <h3>Deploying an NFS Server with Ansible</h3>
+               </section>
+               <section>
+                  <h3>Configuring NFS Clients with Ansible</h3>
+               </section>
+               <section>
+                  <h3>Deploying Samba with Ansible</h3>
+               </section>
+               <section>
+                  <h3>Configuring SMB Clients with Ansible</h3>
+               </section>
+            </section>
+            <section data-state="black">
+               <h2>
+                  <span class="checklist_title"> Guided Exercise:</span>  Automating File-based Storage Provisioning</h2>
+            </section>
+            <section data-state="black">
+               <h2>
+                  <span class="lab_title"> Lab:</span>  Providing File-based Network Storage</h2>
+            </section>
+            <section data-state="black">
+               <h2 class="summary-title">Summary</h2>
+               <ul class="summary_list">
+                  <li>NFS exports are declared in <code>/etc/exports</code> or <code>/etc/exports.d/*.exports</code> files on the NFS server.</li>
+                  <li>The nfs-utils package is required on both the NFS server and NFS clients.</li>
+                  <li>Directories shared using SMB must have the SELinux <code>samba_share_t</code> context type.</li>
+                  <li>The Samba configuration file is <code>/etc/samba/smb.conf</code>.</li>
+                  <li>The <code>smbpasswd -a</code> command adds users to the Samba database.</li>
+                  <li>The samba package is required on Linux SMB servers. The cifs-utils package is required on Linux clients to mount SMB shares.</li>
+               </ul>
+            </section>
+            <section data-state="black">
+               <h2 class="summary-title">Summary (continued)</h2>
+               <ul class="summary_list">
+                  <li>The <code>credentials</code> mount option points to a file that provides the user name and password for SMB authentication.</li>
+                  <li>To access an SMB share that uses the <code>multiuser</code> mount option with minimal default credentials, users must run the <code>cifscreds add</code> command to authenticate with their SMB credentials for the current session.</li>
+               </ul>
+            </section>
+            <section data-state="white"
+                     data-background-image="css/images/RH_Chapter_Title_Background2.png">
+               <h1 class="course-title">Chapter 11: Accessing Block-based Network Storage</h1>
+               <p class="goal_title">Goal: Configure iSCSI initiators on your servers to access block-based storage devices provided by network storage arrays or Ceph storage clusters.</p>
+               <br/>
+               <p class="objective_list_title">Objectives:</p>
+               <ul class="objective_list">
+                  <li>
+                     <p>Provide block-based storage to network clients using the iSCSI protocol.</p>
+                  </li>
+                  <li>
+                     <p>Configure an iSCSI initiator to access a network-based block device, format a new iSCSI device with a file system, configure it for use at boot, and be able to safely discontinue the use of an existing iSCSI block device.</p>
+                  </li>
+                  <li>
+                     <p>Automate the configuration of an iSCSI initiator on a server.</p>
+                  </li>
+               </ul>
+            </section>
+            <section data-state="black">
+               <section>
+                  <h2>Providing iSCSI Storage</h2>
+               </section>
+               <section>
+                  <h3>Describing iSCSI</h3>
+               </section>
+               <section>
+                  <h3>Preparing the System to Provide iSCSI Targets</h3>
+               </section>
+               <section>
+                  <h3>Configuring iSCSI Targets</h3>
+               </section>
+               <section>
+                  <h3>Managing Targets in the Command-line Mode</h3>
+               </section>
+               <section>
+                  <h3/>
+               </section>
+            </section>
+            <section data-state="black">
+               <h2>
+                  <span class="checklist_title"> Guided Exercise:</span>  Providing iSCSI Storage</h2>
+            </section>
+            <section data-state="black">
+               <section>
+                  <h2>Accessing iSCSI Storage</h2>
+               </section>
+               <section>
+                  <h3>Configuring iSCSI Initiators</h3>
+               </section>
+               <section>
+                  <h3>Disconnecting from Targets</h3>
+               </section>
+               <section>
+                  <h3/>
+               </section>
+            </section>
+            <section data-state="black">
+               <h2>
+                  <span class="checklist_title"> Guided Exercise:</span>  Accessing iSCSI Storage</h2>
+            </section>
+            <section data-state="black">
+               <section>
+                  <h2>Automating iSCSI Initiator Configuration</h2>
+               </section>
+               <section>
+                  <h3>Connecting to iSCSI Targets Using Ansible</h3>
+               </section>
+               <section>
+                  <h3>Formatting iSCSI Devices</h3>
+               </section>
+               <section>
+                  <h3/>
+               </section>
+            </section>
+            <section data-state="black">
+               <h2>
+                  <span class="checklist_title"> Guided Exercise:</span>  Automating iSCSI Initiator Configuration</h2>
+            </section>
+            <section data-state="black">
+               <h2>
+                  <span class="lab_title"> Lab:</span>  Accessing Block-based Network Storage</h2>
+            </section>
+            <section data-state="black">
+               <h2 class="summary-title">Summary</h2>
+               <ul class="summary_list">
+                  <li>The targetcli package provides the <code>targetcli</code> tool that you use to create targets.</li>
+                  <li>Configuring an iSCSI client initiator requires installing the iscsi-initiator-utils package.</li>
+                  <li>The initiator IQN is defined in the <code>/etc/iscsi/initiatorname.iscsi</code> file.</li>
+                  <li>The <code>iscsid</code> service must be restarted whenever you modify the <code>/etc/iscsi/initiatorname.iscsi</code> file.</li>
+                  <li>The Ansible <code>open_iscsi</code> module discovers and logs in to targets.</li>
+                  <li>The Ansible storage system role formats and persistently mounts new block devices.</li>
+               </ul>
+            </section>
+            <section data-state="white"
+                     data-background-image="css/images/RH_Chapter_Title_Background2.png">
+               <h1 class="course-title">Chapter 12: Comprehensive Review</h1>
+            </section>
+            <section data-state="black">
+               <section>
+                  <h2>Red Hat Services Management and Automation Comprehensive Review</h2>
+               </section>
+               <section>
+                  <h3>Reviewing Red Hat Services Management and Automation</h3>
+               </section>
+               <section>
+                  <h3/>
+               </section>
+            </section>
+            <section data-state="black">
+               <h2>
+                  <span class="lab_title"> Lab:</span>  Configuring Network Infrastructure Services</h2>
+            </section>
+            <section data-state="black">
+               <h2>
+                  <span class="lab_title"> Lab:</span>  Configuring File Sharing and Printers</h2>
+            </section>
+            <section data-state="black">
+               <h2>
+                  <span class="lab_title"> Lab:</span>  Configuring Email, Database, and Web Services</h2>
+            </section>
+         </div>
+         <div class="logo"> </div>
+      </div>
+      <div class="versionString">
+         <p>RH358-RHEL8.1-en-1-20200707</p>
+      </div>
+      <div class="copyright">
+         <p>Copyright &copy;<script>
+                        document.write(new Date().getFullYear())
+                        
+                    </script> Red Hat, Inc.</p>
+      </div>
+      <script src="lib/js/head.min.js"> </script>
+      <script src="js/reveal.js"> </script>
+      <script>
+                    // More info about config & dependencies:
+                    // - https://github.com/hakimel/reveal.js#configuration
+                    // - https://github.com/hakimel/reveal.js#dependencies
+                    Reveal.initialize({
+                    history: true,
+                    slideNumber: 'h.v',
+                    dependencies: [{
+                    src: 'plugin/markdown/marked.js'
+                    },
+                    {
+                    src: 'plugin/markdown/markdown.js'
+                    },
+                    {
+                    src: 'plugin/menu/menu.js'
+                    },
+                    {
+                    src: 'plugin/notes/notes.js',
+                    async: true
+                    },
+                    {
+                    src: 'plugin/highlight/highlight.js',
+                    async: true,
+                    callback: function() {
+                    hljs.initHighlightingOnLoad();
+                    }
+                    },
+                    // Zoom in and out with Alt+click
+                    { src: 'plugin/zoom-js/zoom.js', async: true }
+                    ],
+                    menu: {
+                    side: 'left',
+                    themes: false,
+                    transitions: false,
+                    useTextContentForMissingTitles: true,
+                    }
+                    });
+                    
+                    Reveal.addEventListener('white', function () {
+                    var colorVaryingClasses = ['versionString', 'copyright', 'slide-number']
+                    for (var j = 0, k = colorVaryingClasses.length; j < k; j++) {
+                    // Called each time the slide with the "white" state is made visible
+                    var elements = document.getElementsByClassName(colorVaryingClasses[j]);
+                    for (var i = 0, l = elements.length; i < l; i++) {
+                    elements[i].style.color = "white";
+                    }
+                    }
+                    
+                    var state = Reveal.getState();
+                    
+                    var menu = document.querySelector('.slide-menu-button');
+                    
+                    if (menu) {
+                    menu.classList.add("white");
+                    menu.classList.remove("black");
+                    }
+                    
+                    var bottomLogo = document.querySelector('.logo');
+                    
+                    if (state.indexh == 0) {
+                    bottomLogo.style.display = "none";
+                    } else {
+                    bottomLogo.style.backgroundImage = "url('css/images/redhat-logo-white.svg')";
+                    }
+                    
+                    var buttonRight = document.querySelector('.navigate-right');
+                    buttonRight.style.borderLeftColor = "white";
+                    
+                    var buttonLeft = document.querySelector('.navigate-left');
+                    buttonLeft.style.borderRightColor = "white";
+                    
+                    });
+                    
+                    Reveal.addEventListener('black', function () {
+                    var colorVaryingClasses = ['versionString', 'copyright', 'slide-number']
+                    
+                    for (var j = 0, k = colorVaryingClasses.length; j < k; j++) {
+                    // Called each time the slide with the "white" state is made visible
+                    var elements = document.getElementsByClassName(colorVaryingClasses[j]);
+                    for (var i = 0, l = elements.length; i < l; i++) {
+                    elements[i].style.color = "black";
+                    }
+                    }
+                    
+                    var menu = document.querySelector('.slide-menu-button');
+                    
+                    if (menu) {
+                    menu.classList.add("black");
+                    menu.classList.remove("white");
+                    }
+                    
+                    var bottomLogo = document.querySelector('.logo');
+                    
+                    bottomLogo.style.display = "block";
+                    bottomLogo.style.backgroundImage = "url('css/images/redhat-logo.svg')";
+                    
+                    var buttonRight = document.querySelector('.navigate-right');
+                    buttonRight.style.borderLeftColor = "#CC0000";
+                    
+                    var buttonLeft = document.querySelector('.navigate-left');
+                    buttonLeft.style.borderRightColor = "#CC0000";
+                    
+                    });
+                    
+                </script>
+   </body>
+</html>
